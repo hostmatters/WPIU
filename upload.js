@@ -6,7 +6,8 @@ jQuery(document).ready(function($) {
         window.send_to_editor = function(html) {
             var imgurl = jQuery(html).attr('src');
             var inputText = jQuery.data(document.body, 'prevElement');
-
+			console.log('imgurl:' + imgurl);
+			console.log('inputText:' + inputText);
             if(inputText != undefined && inputText != '')
             {
                 inputText.val(imgurl);
