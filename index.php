@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: IMG UPLOADER
+Plugin Name: Wordpress IMG UPLOADER
 Plugin URI: 
 Description: 
-Version: 0.1b 
+Version: 0.2 
 Author: Niels
 Author URI: url.com
 */
@@ -42,50 +42,67 @@ Class WPIU {
 		$frontpage_header = get_option('frontpage_header');
 
 ?>
-	<style>
-		.ulimg
-		{
-			max-width: 90%;
-		}
-	</style>
+
+	<!-- table -->
+		<form class="my_image" method="post" action="#">
+		<div id="wrap">
+			<table class="widefat " cellspacing="5">
+				<tr>
+		            <td class="manage-column " colspan="2">
+            			<h2> <b>Selecteer een beeldbestand voor de frontpage: </b></h2>
+						<p>(Formaat: 1140px x 300px. )</p>
+						<input type="text" name="path" class="image_path widefat" value="<?php echo $img_path; ?>" id="image_path">
+						<input type="button" value="Upload Image" class="button-primary" id="upload_image"/>
+		            </td>
+
+				</tr>
+				
+				<tr>
+		            <td class="manage-column "  colspan="2">
+			         			<div id="show_upload_preview">
+									<?php if(! empty($img_path)){ ?>
+									<p>Huidig frontpage bestand:</p>
+									<hr />
+									<img src="<?php echo $img_path ; ?>" class="img-responsive ulimg" />
+									<input type="submit" name="remove" value="Remove Image" class="button-secondary right " id="remove_image"/>
+								<?php } ?>
+								</div>   
+			            
+		            </td>
+				</tr>    
+				
+				
+				<tr>
+		            <td class="manage-column " ><strong class="widefat">Header Text: </strong></td>
+		            <td class="manage-column " ><input type="text" name="front_header" class="widefat" value="<?php echo $frontpage_header; ?>" id="front_header"></td>
 	
+				</tr> 			
+
+				<tr>
+		            <td class="manage-column " ><strong class="widefat">link: </strong></td>
+		            <td class="manage-column " ><input type="text" name="front_link" class="widefat" value="<?php echo $frontpage_url; ?>" id="front_link"></th>
 	
-		<div class="wrap widefat">	
-			<form class="my_image" method="post" action="#">
-			<h2> <b>Selecteer een beeldbestand voor de frontpage: </b></h2>
-			<p>(Formaat: 1140px x 300px. )</p>
-			<input type="text" name="path" class="image_path widefat" value="<?php echo $img_path; ?>" id="image_path">
-			<input type="button" value="Upload Image" class="button-primary" id="upload_image"/><br />
-			<div id="show_upload_preview">
-			
-			<?php if(! empty($img_path)){
-			?>
-			<p>Huidig frontpage bestand:</p>
-			<hr />
-			<img src="<?php echo $img_path ; ?>" class="img-responsive ulimg" />
-			<input type="submit" name="remove" value="Remove Image" class="button-secondary " id="remove_image"/>
-			<?php } ?>
-			</div>
-		
-			<p class="widefat">
-				<label class="widefat">Header Text: </label>
-				<input type="text" name="front_header" class="" value="<?php echo $frontpage_header; ?>" id="front_header">
-			</p>
+				</tr> 
+				<tr>
+		            <td class="manage-column " ><strong>Text: </strong></td>
+		            <td class="manage-column1 " ><input type="text" name="front_text" class="widefat" value="<?php echo $frontpage_text; ?>" id="front_text"></th>
+	
+				</tr> 
+				<tr>
+		            
+		            <td class="manage-column" colspan="2">
+			            <input type="submit" name="submit" class="save_path button-primary right" id="submit_button" value="Gegevens opslaan">
+			        </td>
+	
+				</tr> 								
+			</table>
 		
 		
-			<label class="widefat">link: </label>
-			<input type="text" name="front_link" class="" value="<?php echo $frontpage_url; ?>" id="front_link">
-		
-			<p class="widefat">
-				<label class="widefat">Text: </label>
-				<input type="text" name="front_text" class="" value="<?php echo $frontpage_text; ?>" id="front_text">
-			</p>
-			<p>&nbsp;</p>
-			<p class="widefat">
-				<input type="submit" name="submit" class="save_path button-primary" id="submit_button" value="Gegevens opslaan">
-			</p>
-			</form>
-		</div>
+	</div>
+	</form>	
+	<!-- -->
+	
+
 <?php
 }
 
@@ -93,7 +110,7 @@ Class WPIU {
 		wp_enqueue_script('media-upload'); //Provides all the functions needed to upload, validate and give format to files.
 		wp_enqueue_script('thickbox'); //Responsible for managing the modal window.
 		wp_enqueue_style('thickbox'); //Provides the styles needed for this window.
-		wp_enqueue_script('script', plugins_url('upload.js', __FILE__), array('jquery'), '', true); //It will initialize the parameters needed to show the window properly.
+		wp_enqueue_script('script', plugins_url('upload.js', __FILE__), array('jquery'), '', true); 
 	}
 
 	public function add_stylesheet(){

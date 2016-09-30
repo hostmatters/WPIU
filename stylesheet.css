@@ -1,7 +1,3 @@
-/*
-Created on : Jun 5, 2014, 12:58:19 PM
-Author : InkThemes
-*/
 .ink_image{
 margin: 50px 0px 0px 40px;
 }
@@ -22,4 +18,20 @@ margin-bottom: 20px;
 #remove_image{
 margin-left: 15px;
 
+}
+
+.ulimg
+{
+	width: 100%;
+	margin-right: 10px;
+}
+.widefat
+{
+	width: 98%;
+}
+
+.right
+{
+	float: right;
+	margin-right: 10px;
 }
